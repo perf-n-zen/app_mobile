@@ -12,7 +12,7 @@ import React, { useState, useEffect } from "react";
 
 
 export default function Login() {
-  const staticImage = require("../assets/img/perf.png");
+  // const staticImage = require("@/assets/img/perf.png");
 
   const [id, setId] = useState("");
   const [pwd, setPwd] = useState("");

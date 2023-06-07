@@ -2,8 +2,8 @@ import React from 'react'
 import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 
 const Home = () => {
-  const homeImg = require('../assets/img/home.svg');
-  const imgBack = require('../assets/img/imageFond.png');
+  // const homeImg = require('../assets/img/home.svg');
+  // const imgBack = require('../assets/img/imageFond.png');
   return (
     
  <ImageBackground source={imgBack} style={styles.container} resizeMode='cover'>
