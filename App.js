@@ -11,8 +11,8 @@ import Login from './src/components/Login';
 function App() {
 
  return (
-  <Login/>
-  //  <Navbar />
+  // <Login/>
+   <Navbar />
 
   );
 }

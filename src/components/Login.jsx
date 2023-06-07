@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import Checkbox from 'expo-checkbox';
 import React, { useState, useEffect } from "react";
-import Img from '../assets/img/perf.png';
 
 
 

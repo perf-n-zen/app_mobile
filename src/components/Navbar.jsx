@@ -1,9 +1,14 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity,  } from "react-native";
 import React, { useState, useEffect } from "react";
 import Home from "./Home";
 import Questions from "./Questions";
 import Profile from "./Profile";
 import Parameter from "./Parameter";
+import Gear from '../assets/img/gear.svg';
+import HomeIcon from  '../assets/img/home.svg';
+import ProfileIcon from '../assets/img/profile.svg';
+import Msg from '../assets/img/msg.svg';
+
 
 export default function Navbar() {
   const [optionDisplay, setOptionDisplay] = useState(home);
@@ -12,6 +17,8 @@ export default function Navbar() {
   const questions = "questions";
   const profile = "profile";
   const param = "param";
+
+  // const homeImg = require('../assets/img/home.svg');
 
   useEffect (() =>{
    }, [optionDisplay]);
@@ -29,60 +36,35 @@ export default function Navbar() {
             console.log(optionDisplay);
           }}
         >
-          <Text style={{ color: optionDisplay === home ? "#e9c46a" : "#ffff" }}>
-            Home
+          <Text style={{ color: optionDisplay === home ? "#e9c46a" : "#000" }}>
+          <HomeIcon width={20} height={20}/>
           </Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => setOptionDisplay(questions)}>
           <Text
-            style={{ color: optionDisplay === questions ? "#e9c46a" : "#ffff" }}
+            style={{ color: optionDisplay === questions ? "#e9c46a" : "#000" }}
           >
-            Questions
+           <Msg width={20} height={20}/>
           </Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => setOptionDisplay(profile)}>
           <Text
-            style={{ color: optionDisplay === profile ? "#e9c46a" : "#ffff" }}
+            style={{ color: optionDisplay === profile ? "#e9c46a" : "#000" }}
           >
-            Profile
+             <ProfileIcon width={20} height={20}/>
           </Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => setOptionDisplay(param)}>
-          <Text  style={{ color: optionDisplay === param ? "#e9c46a" : "#ffff" }}>
-            Parameter
+          <Text  style={{ color: optionDisplay === param ? "#e9c46a" : "#000" }}>
+          <Gear width={20} height={20}/>
           </Text>
         </TouchableOpacity>
       </View>
     </View>
-
-    // <View style={styles.container}>
-    //   <View>
-    //     <TouchableOpacity onPress={ () => setPage(home)}>
-    //       <Text>Home</Text>
-    //     </TouchableOpacity>
-    //   </View>
-
-    //   <View>
-    //     <TouchableOpacity onPress={ () => setPage(msg)}>
-    //       <Text>Msg</Text>
-    //     </TouchableOpacity>
-    //   </View>
-
-    //   <View>
-    //   <TouchableOpacity onPress={ () => console.log("pressed !")}>
-    //     <Text>Profile</Text>
-    //   </TouchableOpacity>
-    //   </View>
-
-    //   <View>
-    //   <TouchableOpacity onPress={ () => console.log("pressed !")}>
-    //     <Text>Param</Text>
-    //   </TouchableOpacity>
-    //   </View>
-    // </View>
+ 
   );
 }
 const styles = StyleSheet.create({
@@ -93,15 +75,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   bottomNav: {
-    backgroundColor: "red",
+    backgroundColor: "#F5F1E4",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
-    width: "100%",
-    height: "5%",
+    width: "105%",
+    height: "8%",
     alignSelf: "auto",
-    marginTop: "195%",
+    marginTop: "200%",
+    borderTopLeftRadius : 80,
+    borderTopRightRadius : 80,
+    borderWidth : 2,
+     borderColor: "#E3382E",
+     overflow: "hidden",
+     zIndex: 1000
+
   },
 });
 
@@ -124,3 +113,6 @@ const styles = StyleSheet.create({
 
 // },
 //});
+/* 4835514 1 */
+
+
