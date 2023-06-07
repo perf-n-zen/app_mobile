@@ -1,11 +1,14 @@
 import { Slot } from "expo-router";
 import Navbar from "./Navbar";
+import { Provider } from "./context/auth";
 
 export default function HomeLayout() {
     return (
     <>
-      <Slot style={{marginTop: '5%', marginBottom: '5%'}} />
+    <Provider>
+      <Slot />
       <Navbar />
+    </Provider>
     </>
   );
 
