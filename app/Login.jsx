@@ -8,11 +8,14 @@ import {
 } from "react-native";
 import Checkbox from 'expo-checkbox';
 import React, { useState, useEffect } from "react";
+import { Redirect } from "expo-router";
 
 
 
 export default function Login() {
   // const staticImage = require("@/assets/img/perf.png");
+
+  // const { user } = useAuth();
 
   const [id, setId] = useState("");
   const [pwd, setPwd] = useState("");
@@ -25,7 +28,10 @@ const regExpID = new RegExp(/^[_a-zA-Z][_a-zA-Z0-9]{3,20}/)
 const regExpPwd = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
 
   const sendValue = () => {
-    console.log("value de nos input : ", id, " ", pwd);
+    // if(user){
+    //   return <Redirect href="/login" />;
+    // }
+    console.log("value de nos input : ", id, " ", pwd, " ", isChecked);
     setDisabled(true);
     setId("");
     setPwd("");
@@ -54,7 +60,7 @@ const regExpPwd = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
 
     <View style={styles.titleDiv}>
     <Text></Text>
-    <Image source={staticImage} style={{width: 400, height: 400}} />
+    {/* <Image source={staticImage} style={{width: 400, height: 400}} /> */}
     </View>
   
     <View style={styles.connectionView}>

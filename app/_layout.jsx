@@ -1,5 +1,6 @@
 import { Slot } from "expo-router";
 import Navbar from "./Navbar";
+import Login from "./Login";
 import { Provider } from "./context/auth";
 
 export default function HomeLayout() {
@@ -7,7 +8,8 @@ export default function HomeLayout() {
     <>
     <Provider>
       <Slot />
-      <Navbar />
+      {/* <Navbar /> */}
+      <Login/>
     </Provider>
     </>
   );
