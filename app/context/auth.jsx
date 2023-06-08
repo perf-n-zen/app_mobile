@@ -1,26 +1,23 @@
 import { useRouter, useSegments } from "expo-router";
-import React from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-const AuthContext = React.createContext(null);
+const AuthContext = createContext(null);
 
 // This hook peut être utilisé pour accéder aux informations de l'utilisateur.
 export function useAuth() {
-  return React.useContext(AuthContext);
+  return useContext(AuthContext);
 }
 
-// This hook will protect the route access based on user authentication.
+// Ce crochet protégera l'accès à la route en fonction de l'authentification de l'utilisateur.
 function useProtectedRoute(user) {
   const segments = useSegments();
   const router = useRouter();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const inAuthGroup = segments[0] === "(auth)";
 
-    if (
-      // If the user is not signed in and the initial segment is not anything in the auth group.
-      !user &&
-      !inAuthGroup
-    ) {
+    // Si l'utilisateur n'est pas connecté et que le segment initial n'est pas dans le groupe auth.      !user &&
+    if (!inAuthGroup) {
       // Redirect to the sign-in page.
       router.replace("/sign-in");
     } else if (user && inAuthGroup) {
@@ -31,7 +28,7 @@ function useProtectedRoute(user) {
 }
 
 export function Provider(props) {
-  const [user, setAuth] = React.useState(null);
+  const [user, setAuth] = useState(null);
 
   useProtectedRoute(user);
 
