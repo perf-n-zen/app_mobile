@@ -8,14 +8,13 @@ import {
 } from "react-native";
 import Checkbox from 'expo-checkbox';
 import React, { useState, useEffect } from "react";
-import { Redirect } from "expo-router";
+import { Redirect, useRouter } from "expo-router";
 
 
 
 export default function Login() {
   // const staticImage = require("@/assets/img/perf.png");
-
-  // const { user } = useAuth();
+  const router = useRouter();
 
   const [id, setId] = useState("");
   const [pwd, setPwd] = useState("");
@@ -35,6 +34,7 @@ const regExpPwd = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
     setDisabled(true);
     setId("");
     setPwd("");
+    return <Redirect href="/" />;
   };
 
   const checkForm = (regExp) => {
@@ -107,7 +107,7 @@ const regExpPwd = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
         style={styles.btn}
         disabled={disabled}
       >
-        <Text style={styles.btnText}>Connecter</Text>
+         <Text style={styles.btnText}>Connecter</Text>
       </TouchableOpacity>
       </View>
     </View>

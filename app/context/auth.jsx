@@ -1,49 +1,46 @@
-import { useRouter, useSegments } from "expo-router";
-import React from "react";
+// import { useRouter, useSegments } from "expo-router";
+// import { createContext, useContext, useEffect, useState } from "react";
 
-const AuthContext = React.createContext(null);
+// const AuthContext = createContext(null);
 
-// This hook peut être utilisé pour accéder aux informations de l'utilisateur.
-export function useAuth() {
-  return React.useContext(AuthContext);
-}
+// // This hook peut être utilisé pour accéder aux informations de l'utilisateur.
+// export function useAuth() {
+//   return useContext(AuthContext);
+// }
 
-// This hook will protect the route access based on user authentication.
-function useProtectedRoute(user) {
-  const segments = useSegments();
-  const router = useRouter();
+// // Ce crochet protégera l'accès à la route en fonction de l'authentification de l'utilisateur.
+// function useProtectedRoute(user) {
+//   const segments = useSegments();
+//   const router = useRouter();
 
-  React.useEffect(() => {
-    const inAuthGroup = segments[0] === "(auth)";
+//   useEffect(() => {
+//     const inAuthGroup = segments[0] === "(auth)";
 
-    if (
-      // If the user is not signed in and the initial segment is not anything in the auth group.
-      !user &&
-      !inAuthGroup
-    ) {
-      // Redirect to the sign-in page.
-      router.replace("/sign-in");
-    } else if (user && inAuthGroup) {
-      // Redirect away from the sign-in page.
-      router.replace("/");
-    }
-  }, [user, segments]);
-}
+//     // Si l'utilisateur n'est pas connecté et que le segment initial n'est pas dans le groupe auth.      !user &&
+//     if (!inAuthGroup) {
+//       // Redirect to the sign-in page.
+//       router.replace("/sign-in");
+//     } else if (user && inAuthGroup) {
+//       // Redirect away from the sign-in page.
+//       router.replace("/");
+//     }
+//   }, [user, segments]);
+// }
 
-export function Provider(props) {
-  const [user, setAuth] = React.useState(null);
+// export function Provider({child}) {
+//   const [user, setAuth] = useState(null);
 
-  useProtectedRoute(user);
+//   useProtectedRoute(user);
 
-  return (
-    <AuthContext.Provider
-      value={{
-        signIn: () => setAuth({}),
-        signOut: () => setAuth(null),
-        user,
-      }}
-    >
-      {props.children}
-    </AuthContext.Provider>
-  );
-}
+//   return (
+//     <AuthContext.Provider
+//       value={{
+//         signIn: () => setAuth({}),
+//         signOut: () => setAuth(null),
+//         user,
+//       }}
+//     >
+//       {child.Children}
+//     </AuthContext.Provider>
+//   );
+// }

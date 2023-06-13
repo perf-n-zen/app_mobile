@@ -6,11 +6,13 @@ const Home = () => {
   // const imgBack = require('../assets/img/imageFond.png');
   return (
     
- <ImageBackground source={imgBack} style={styles.container} resizeMode='cover'>
-  <Text style={{top:500}}> Hello home</Text>
- </ImageBackground>
+//  <ImageBackground source={imgBack} style={styles.container} resizeMode='cover'>
+//   <Text style={{top:500}}> Hello home</Text>
+//  </ImageBackground>
  
-
+    <View>
+      <Text>Redirect</Text>
+    </View>
 
     
   )
