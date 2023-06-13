@@ -8,8 +8,8 @@ export default function HomeLayout() {
     <>
     <Provider>
       <Slot />
-      {/* <Navbar /> */}
-      <Login/>
+       <Navbar />
+      {/* { <Login/> } */}
     </Provider>
     </>
   );
