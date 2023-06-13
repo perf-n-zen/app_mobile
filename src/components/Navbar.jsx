@@ -8,53 +8,53 @@ import Home from "./Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Questions from "./Questions";
 import Profile from "./Profile";
-import TabBarIcon from "./../../node_modules/@react-navigation/bottom-tabs/lib/module/views/TabBarIcon";
-import { BlurView } from 'expo-blur';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function Navbar() {
   const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator screenOptions={{
-     tabBarStyle: { height : 70},
+     tabBarStyle: { height : 80, backgroundColor: "#2C2B51"},
      headerShown: false,
      tabBarShowLabel : false,
+    tabBarActiveTintColor: '#ED7C34',
+    tabBarInactiveTintColor : "white"
     }}
-    activeColor={'#694fad'}
-        inactiveColor={'#694fad'}
-        barStyle={{backgroundColor: '#694fad', }}
+
         >
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: () => (
-            <HomeIcon/>
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="home" color={color} size={40} />
           ),
         }}
       />
       <Tab.Screen name="Question" component={Questions} 
          options={{
-          tabBarIcon: () => (
-            <Msg/>
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="chat" color={color} size={40} />
           ),
         }}
       />
-      <Tab.Screen name="Settings" component={Parameter}
-   
-              options={{
-          tabBarIcon: () => (
-            <Gear/>
+
+      <Tab.Screen name="Profile" component={Profile} 
+           options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="account" color={color} size={40} />
           ),
-          // title: false,
+        }}
+      />
+
+      <Tab.Screen name="Settings" component={Parameter}
+      options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="cog" color={color} size={40} />
+          ),
         }}
        />
-      <Tab.Screen name="Profile" component={Profile} 
-                options={{
-          tabBarIcon: () => (
-            <ProfileIcon/>
-          ),
-        }}
-      />
     </Tab.Navigator>
 
     //     <View style={styles.container}>
