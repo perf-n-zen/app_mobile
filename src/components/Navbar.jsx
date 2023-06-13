@@ -15,11 +15,11 @@ export default function Navbar() {
   const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator screenOptions={{
-     tabBarStyle: { height : 80, backgroundColor: "#2C2B51"},
+     tabBarStyle: { height : 80, borderTopWidth: 2 , borderTopColor: '#ED7C34'},
      headerShown: false,
      tabBarShowLabel : false,
     tabBarActiveTintColor: '#ED7C34',
-    tabBarInactiveTintColor : "white"
+    tabBarInactiveTintColor : "#2C2B51"
     }}
 
         >
