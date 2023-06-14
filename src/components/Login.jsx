@@ -4,17 +4,22 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
-  Image
+  Image, Linking
 } from "react-native";
 import Checkbox from 'expo-checkbox';
 import React, { useState, useEffect } from "react";
-import { Redirect, useRouter } from "expo-router";
+import { useNavigation, createNavigationContainerRef } from "@react-navigation/native"; 
+
+
 
 
 
 export default function Login() {
-  // const staticImage = require("@/assets/img/perf.png");
-  const router = useRouter();
+
+  // const Stack = createNativeStackNavigator();
+  const navigation = useNavigation()
+   const staticImage = require("../assets/img/perf.png");
+
 
   const [id, setId] = useState("");
   const [pwd, setPwd] = useState("");
@@ -22,19 +27,17 @@ export default function Login() {
   const [validPwd, setValidPwd ] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [isChecked, setChecked] = useState(false);
+  const urlNav = 'com.app.perfnzen://Home'
 
 const regExpID = new RegExp(/^[_a-zA-Z][_a-zA-Z0-9]{3,20}/)
 const regExpPwd = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
 
   const sendValue = () => {
-    // if(user){
-    //   return <Redirect href="/login" />;
-    // }
     console.log("value de nos input : ", id, " ", pwd, " ", isChecked);
     setDisabled(true);
     setId("");
     setPwd("");
-    return <Redirect href="/" />;
+    navigation.replace("Home");
   };
 
   const checkForm = (regExp) => {
@@ -103,7 +106,7 @@ const regExpPwd = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
         </View>
 
       <TouchableOpacity
-        onPress={sendValue}
+        onPress={() => Linking.openURL(urlNav) }
         style={styles.btn}
         disabled={disabled}
       >

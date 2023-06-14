@@ -3,16 +3,19 @@ import { View, Text, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Navbar from './src/components/Navbar';
+import Login from './src/components/Login';
+import Linking from './src/assets/Linking';
 
 
 
 
-const Stack = createNativeStackNavigator();
+
 
 function App() {
   return (
-    <NavigationContainer>
-      <Navbar/>
+    <NavigationContainer linking={Linking}>
+    <Login/>
+      {/* <Navbar/> */}
     </NavigationContainer>
   );
 }

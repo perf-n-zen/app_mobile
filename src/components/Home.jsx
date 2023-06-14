@@ -3,29 +3,32 @@ import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 
 const Home = () => {
   // const homeImg = require('../assets/img/home.svg');
-  // const imgBack = require('../assets/img/imageFond.png');
+  const image = {uri: "https://api-ivory-two.vercel.app/assets/image/background_APP.png"}
   return (
-    
-//  <ImageBackground source={imgBack} style={styles.container} resizeMode='cover'>
-//   <Text style={{top:500}}> Hello home</Text>
-//  </ImageBackground>
- 
-    <View>
-      <Text>Redirect</Text>
+    <View style={styles.container}>
+    <ImageBackground source={image} resizeMode='cover' style={{justifyContent : 'center', width: "100%", height: "100%" }}>
+      
+    <View style={styles.logoView}>
+    <Logo width={100} height={100}/>
     </View>
-
-    
-  )
+    </ImageBackground>
+    </View>
+  );
 }
- const styles = StyleSheet.create({
-  container:  {
-    display: 'flex',
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1, 
+    flexDirection : 'column',
     width: "100%",
-    height: "150%",
-    zIndex: -1
+    height: "100%",
   },
-  image: {
-    
+  logoView : {
+    width: "100%",
+    height: "20%",
+    bottom: "30%",
+    justifyContent : "center",
+    alignItems : "center",
   }
- })
+});
 export default Home
