@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
+import Logo from '../assets/img/logo.svg'
 
 const Home = () => {
   // const homeImg = require('../assets/img/home.svg');

@@ -14,8 +14,8 @@ import Linking from './src/assets/Linking';
 function App() {
   return (
     <NavigationContainer linking={Linking}>
-    <Login/>
-      {/* <Navbar/> */}
+    {/* <Login/> */}
+      <Navbar/>
     </NavigationContainer>
   );
 }

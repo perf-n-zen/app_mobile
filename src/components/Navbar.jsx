@@ -10,6 +10,7 @@ import Questions from "./Questions";
 import Profile from "./Profile";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Graphiques from './Graphiques';
 
 export default function Navbar() {
   const Tab = createBottomTabNavigator();
@@ -32,7 +33,7 @@ export default function Navbar() {
           ),
         }}
       />
-      <Tab.Screen name="Question" component={Questions} 
+      <Tab.Screen name="Graphiques" component={Graphiques} 
          options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="chat" color={color} size={40} />

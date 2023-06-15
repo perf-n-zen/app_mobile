@@ -106,7 +106,7 @@ const regExpPwd = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
         </View>
 
       <TouchableOpacity
-        onPress={() => Linking.openURL(urlNav) }
+        onPress={() => console.log('testé') }
         style={styles.btn}
         disabled={disabled}
       >
