@@ -14,7 +14,7 @@ import {
 } from "react-native-chart-kit";
 import { useEffect } from "react";
 // import SelectComponent from "../views/SelectComponent";
-// import BarChartView from './BarChartView';
+ import BarChartView from './BarChartView';
 
 export default function Graphiques() {
   //Button for choose the graph
@@ -148,6 +148,7 @@ export default function Graphiques() {
       </View>
       <View style={styles.viewSvg}>
         <Text style={{backgroundColor: "red", zIndex: 2 , top: 300}}>BTKDTPETK</Text>
+        <BarChartView/>
         <CurveGraphics style={styles.curvegraph}/>
       </View>
     </View>
