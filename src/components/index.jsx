@@ -11,6 +11,11 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 export default function index() {
 
 const image = {uri: "https://api-ivory-two.vercel.app/assets/image/background_APP.png"}
+const [showQuestion, setShowQuestion] = useState(false);
+
+const toggleQuestion = () => {
+  setShowQuestion(!showQuestion);
+};
   return (
     <View style={styles.container}>
     <ImageBackground source={image} resizeMode='cover' style={{justifyContent : 'center', width: "100%", height: "100%" }}>
@@ -18,12 +23,10 @@ const image = {uri: "https://api-ivory-two.vercel.app/assets/image/background_AP
     <View style={styles.logoView}>
     <Logo width={100} height={100}/>
     </View>
-    <View style={styles.questionPosition}>
-     <QuestionViewOn/>
-     </View>
-     <TouchableOpacity style={styles.test}>
-      <Text>test</Text>
-     </TouchableOpacity>
+    {showQuestion ? <QuestionViewOn /> : <QuestionViewOff />}
+        <TouchableOpacity style={styles.test} onPress={toggleQuestion}>
+          <Text>test</Text>
+        </TouchableOpacity>
     </ImageBackground>
     </View>
   );
