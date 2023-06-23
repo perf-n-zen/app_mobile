@@ -8,110 +8,120 @@ import {
 } from "react-native";
 import Checkbox from 'expo-checkbox';
 import React, { useState, useEffect } from "react";
-import { useNavigation, createNavigationContainerRef } from "@react-navigation/native"; 
+import { useNavigation, createNavigationContainerRef } from "@react-navigation/native";
+import axios from "axios";
 
 
 
 
+export default function Login({ navigation, route }) {
 
-export default function Login() {
 
-  // const Stack = createNativeStackNavigator();
-  const navigation = useNavigation()
-   const staticImage = require("../assets/img/perf.png");
-
+  const staticImage = require("../assets/img/perf.png");
+  const { setUser } = route.params;
 
   const [id, setId] = useState("");
   const [pwd, setPwd] = useState("");
-  const [validId, setValidId ] = useState(false);
-  const [validPwd, setValidPwd ] = useState(false);
+  const [validId, setValidId] = useState(false);
+  const [validPwd, setValidPwd] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [isChecked, setChecked] = useState(false);
   const urlNav = 'com.app.perfnzen://Home'
 
-const regExpID = new RegExp(/^[_a-zA-Z][_a-zA-Z0-9]{3,20}/)
-const regExpPwd = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
+  const regExpID = new RegExp(/^[_a-zA-Z][_a-zA-Z0-9]{3,20}/)
+  const regExpPwd = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
 
   const sendValue = () => {
-    console.log("value de nos input : ", id, " ", pwd, " ", isChecked);
-    setDisabled(true);
-    setId("");
-    setPwd("");
-    navigation.replace("Home");
-  };
-
-  const checkForm = (regExp) => {
-
-    if(regExp.test(pwd)){
-      setDisabled(false);
-      setValidPwd(true)
-    } else {
+    
+    axios.post("https://api-ivory-two.vercel.app/api/V1/connect", {
+      Mail_adress: id,
+      Password: pwd,
+    }).then((response) => {
+      console.log("value de nos input : ", id, " ", pwd, " ", isChecked);
       setDisabled(true);
-      setValidPwd(false);
-    }
-
+      setId("");
+      setPwd("");
+      console.log(response);
+      setUser(response.data);
+    }).catch((error) => {
+      console.log(error);
+    });
   };
+
+  // const checkForm = (regExp) => {
+
+  //   if(regExp.test(pwd)){
+  //     setDisabled(false);
+  //     setValidPwd(true)
+  //   } else {
+  //     setDisabled(true);
+  //     setValidPwd(false);
+  //   }
+
+  // };
 
   useEffect(() => {
   }, [id]);
 
-  useEffect(() => {}, [disabled]);
+  useEffect(() => { }, [disabled]);
 
   console.log(disabled);
   return (
     <View style={styles.container}>
 
-    <View style={styles.titleDiv}>
-    <Text></Text>
-    {/* <Image source={staticImage} style={{width: 400, height: 400}} /> */}
-    </View>
-  
-    <View style={styles.connectionView}>
+      <View style={styles.titleDiv}>
+        <Text></Text>
+        {/* <Image source={staticImage} style={{width: 400, height: 400}} /> */}
+      </View>
 
-    <Text style={styles.title}>
-      Connectez-vous pour continuer !
-    </Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Identifiant"
-        placeholderTextColor="#FFF"
-        type="text"
-        value={id}
-        onChangeText={(userEntry) => {
-          setId(userEntry);
-          checkForm(regExpID, userEntry);
-        }}
-      />
+      <View style={styles.connectionView}>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Mot de passe"
-        placeholderTextColor="#FFF"
-        type="password"
-        value={pwd}
-        onChangeText={(userEntry) => {
-          setPwd(userEntry);
-          checkForm(regExpPwd, userEntry)
-        }}
-      />
-        <View style={styles.checkView}>
-        <Checkbox
-          style={styles.checkbox}
-          value={isChecked}
-          onValueChange={setChecked}
-          color={isChecked ? '#ED7C34' : undefined}
+        <Text style={styles.title}>
+          Connectez-vous pour continuer !
+        </Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Identifiant"
+          placeholderTextColor="#FFF"
+          type="text"
+          autoCapitalize="none"
+          value={id}
+          onChangeText={(userEntry) => {
+            setId(userEntry);
+            // checkForm(regExpID, userEntry);
+          }}
         />
-        <Text style={styles.stayConnect}>Se souvenir de moi</Text>
-        <Text style={styles.forgetPwd}>Mot de passe oublié ?</Text>
+
+        <TextInput
+          style={styles.input}
+          placeholder="Mot de passe"
+          placeholderTextColor="#FFF"
+          autoCapitalize="none"
+          type="password"
+          value={pwd}
+          onChangeText={(userEntry) => {
+            setPwd(userEntry);
+            // checkForm(regExpPwd, userEntry)
+          }}
+        />
+        <View style={styles.checkView}>
+          <Checkbox
+            style={styles.checkbox}
+            value={isChecked}
+            onValueChange={setChecked}
+            color={isChecked ? '#ED7C34' : undefined}
+          />
+          <Text style={styles.stayConnect}>Se souvenir de moi</Text>
+          <Text style={styles.forgetPwd}>Mot de passe oublié ?</Text>
         </View>
 
-      <TouchableOpacity
-        onPress={() => Linking.openURL(urlNav) }
-        style={styles.btn}
-        disabled={disabled}
-      >
-         <Text style={styles.btnText}>Connecter</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => sendValue()}
+          style={styles.btn}
+        // disabled={disabled}
+        >
+          <Text style={styles.btnText}>Connecter</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -168,7 +178,7 @@ const styles = StyleSheet.create({
     color: "green",
     borderColor: "green",
   },
-  checkView : {
+  checkView: {
     marginTop: 10,
     paddingTop: 20,
     display: "flex",
@@ -184,7 +194,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     left: 60
   },
-  forgetPwd : {
+  forgetPwd: {
     color: "white",
     fontSize: 10,
     left: 130
